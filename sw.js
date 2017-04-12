@@ -2,13 +2,11 @@ self.addEventListener('install', function(e) {
     e.waitUntil(
         caches.open('eventTest').then(function(cache) {
             return cache.addAll([
-                '/',
                 './index.html',
                 './rooms.html',
                 './schedule.html',
                 './speakers.html',
-                './tracks.html',
-                './js/'
+                './tracks.html'
             ]); 
         })  
     );  
