@@ -164,13 +164,25 @@ describe('generate', function() {
 
 describe("testing javascript in the browser", function() {
   this.timeout(60000);
-  beforeEach(function() {
-    this.browser = new webdriver.Builder()
+   beforeEach(function() {
+    if (process.env.SAUCE_USERNAME !== undefined) {
+      this.browser = new webdriver.Builder()
+      .usingServer('http://'+ process.env.SAUCE_USERNAME+':'+process.env.SAUCE_ACCESS_KEY+'@ondemand.saucelabs.com:80/wd/hub')
+      .withCapabilities({
+        'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
+        build: process.env.TRAVIS_BUILD_NUMBER,
+        username: process.env.SAUCE_USERNAME,
+        accessKey: process.env.SAUCE_ACCESS_KEY,
+        browserName: "chrome"
+      }).build();
+    } else {
+      this.browser = new webdriver.Builder()
       .withCapabilities({
         browserName: "chrome"
       }).build();
+    }
 
-      return this.browser.get("http://localhost:5000/live/preview/princu7@gmail.com/FOSSASIA%202014/");
+     return this.browser.get("http://localhost:5000/live/preview/princu7@gmail.com/FOSSASIA%202014");
   });
 
   afterEach(function() {
