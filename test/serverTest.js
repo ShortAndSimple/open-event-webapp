@@ -16,6 +16,7 @@ var fold = require('../src/backend/fold.js');
 var generator = require('../src/backend/generator.js');
 var dist = require('../src/backend/dist.js');
 var app = require('../src/app');
+var webdriver = require("selenium-webdriver");
 
 
 
@@ -129,14 +130,14 @@ describe('fold', function() {
   });
 });
 
-describe('app',  () =>  {
+/*describe('app',  () =>  {
   describe('run', () => {
     it('should run app', () =>  {
       const expressApp = app.getApp();
       assert.equal(expressApp.get('port'), (process.env.PORT || 5000))
     })
   })
-});
+});*/
 
 describe('generate', function() {
   describe('.createDistDir()', function() {
@@ -157,6 +158,33 @@ describe('generate', function() {
         done();
       });
 
+    });
+  });
+});
+
+describe("testing javascript in the browser", function() {
+  this.timeout(60000);
+  beforeEach(function() {
+    this.browser = new webdriver.Builder()
+      .withCapabilities({
+        browserName: "chrome"
+      }).build();
+
+      return this.browser.get("http://localhost:5000/live/preview/princu7@gmail.com/FOSSASIA%202014/");
+  });
+
+  afterEach(function() {
+    return this.browser.quit();
+  });
+
+  it("should handle clicking on a headline", function(done) {
+    var headline = this.browser.findElement(webdriver.By.css('h1'));
+
+    headline.click();
+
+    headline.getText().then(function(txt) {
+      assert.equal(txt, "FOSSASIA 2014");
+      done();
     });
   });
 });
