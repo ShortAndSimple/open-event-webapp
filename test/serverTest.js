@@ -164,9 +164,10 @@ describe('generate', function() {
 
 describe("testing javascript in the browser", function() {
   this.timeout(60000);
-   beforeEach(function() {
+  var driver;
+   before(function() {
     if (process.env.SAUCE_USERNAME !== undefined) {
-      this.browser = new webdriver.Builder()
+       driver = new webdriver.Builder()
       .usingServer('http://'+ process.env.SAUCE_USERNAME+':'+process.env.SAUCE_ACCESS_KEY+'@ondemand.saucelabs.com:80/wd/hub')
       .withCapabilities({
         'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
@@ -176,24 +177,24 @@ describe("testing javascript in the browser", function() {
         browserName: "chrome"
       }).build();
     } else {
-      this.browser = new webdriver.Builder()
+       driver = new webdriver.Builder()
       .withCapabilities({
         browserName: "chrome"
       }).build();
     }
 
-     return this.browser.get("http://localhost:5000/live/preview/princu7@gmail.com/FOSSASIA%202014");
+     //return this.browser.get("http://localhost:5000/live/preview/princu7@gmail.com/FOSSASIA%202014");
   });
 
-  afterEach(function() {
-    return this.browser.quit();
+  after(function() {
+    return driver.quit();
   });
 
   it("should handle clicking on a headline", function(done) {
-    var headline = this.browser.findElement(webdriver.By.css('h1'));
 
+    driver.get("http://localhost:5000/live/preview/princu7@gmail.com/FOSSASIA%202014");
+    var headline = driver.findElement(webdriver.By.css('h1'));
     headline.click();
-
     headline.getText().then(function(txt) {
       assert.equal(txt, "FOSSASIA 2014");
       done();
