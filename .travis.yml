@@ -1,10 +1,13 @@
 language: node_js
 node_js:
-  - 5.1.0
+  - 6.10.2
 env:
   - CXX=g++-4.8
 addons:
-  sauce_connect: true
+  sauce_connect:
+    username: princu7
+  jwt:
+    secure: mytdk9Wu6KI8EAdrjmhanlXWAnPfVaWZ0g0Ay00WdeUW/U/fkfyV532h6fGByNyjs5xZulRnS5Ri5BhZpBahlp2vGYWd6novmk4uuedurPDJ8utgPd3jaMJv/fPYPn55iy7R40y5XTnHBXCCrzyqYgrDJ7Lw0doTOAYEV/4UGH6V3lTPQGaq+11sg+8bSJs18iUKdJ21Phi5M8IxlqxINdJnRoxV0r3SoEXf9DTWtJGO/EUvccsXfdwiq5vkdK2Ue4gYsDTXaTy/qwxHWYnjL4T9ePIhplqUK8gb5/MmTrzsCyJXwiCxl+t7k4fUa1dyYiuzh7QaufedZnVYXoVrr6mIAZ/1qIjFo138B4DKJxMtfdwoBz9cBCd+XE9oxrjnRI7w1oDlWIuni54W95ngjzwC5gC3Y7rudsq0HHnW599f9iQLk8oDmqPWHONLrw5h9jTiPzVspNHza62sdxWLsX4sSQrpVu159PhogaZDH8frloNyZuc2KaPU6Ln+rGBfW49nRB7yKT3NaT24q2NOcQmm8M0/4NUYqF3Ap9evaPeNt+klKRECnIe+W6Z9AgKd7gNsZdDEF8IFFBcd2RdPh7CwPcjMqwck4kOwIu/KMEMfqebQ7w7fOSmiZ8LJdckdwGnHrQHIHBhubycZ0muwvOacLRI516Sdmb4W42t8xBw=
   apt:
     sources:
       - ubuntu-toolchain-r-test
