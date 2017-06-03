@@ -7,7 +7,10 @@ services:
 env:
   - CXX=g++-4.8 PATH=$PATH:${HOME}/google-cloud-sdk/bin CLOUDSDK_CORE_DISABLE_PROMPTS=1
 addons:
-  sauce_connect: true
+  sauce_connect:
+    username: princu7
+  awt:
+    secure: TstLZwpiNDRm1mucb1Fxoe6KnuHmNnMl9o3WGrdCEkQ2z0Z6TTefgwMs5Cxt3SKAlNyWq/6dFI+ZjjhVBlzaGoI7MhHcGTKh2O4RXkGCWWKlEeDEWvagcOe1Ebv01DTVRakWkpRScZkiHc9Vo6MYDpM1C7VkXfEEy1K9w51b7MR4Op2cHlo+FO6Ffc+svSxeWBZW1VeeVL3eAO0xlEgz3X38XOJNJiVdORYmEwRoSL6BfYe3fH0tiy+xx5Tjtq8+tffs2Re9iKcJIZWcPuX+OsG57a7/YsxuvWTZKMdcLNhKla9s1tiw+ART3EzPw0fH2IiE2yebHXHNiuKQwqqpeUf4KA8Qwdn5ccQ13KB8OG4qBZBzBLP0l1gvGnrTFOS0hYfnihUO7M1xVq0Jo91CbERBV5ej3bjXE2ntw9FNYFW7+9Hdn8FmQqNsNY9Qq5HYulRWazPLHhG87sino+KNxf9U6CedRyqMVhz5G1n4bRwsrlcDVEmraVyjoU0JZoWOabbXJMVjZFd8n5m3FQ428Smp2S8ieHKLZI0Dr6fXrcirEwp0WTACok+qOcX8mLs1uz2odnXu8UDQccaBZR04kQ/cHc2gCodEzZjXolJVitRzwI6ovtjZynvA2eldCeKhtQacID/i2T7C+lux74HwnjHUYjm4qykynocNoAIwRxk=
   apt:
     sources:
       - ubuntu-toolchain-r-test
